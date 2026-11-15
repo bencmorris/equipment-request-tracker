@@ -1,0 +1,163 @@
+:root {
+  --bg: #f4f6fb;
+  --card: #ffffff;
+  --ink: #1f2733;
+  --muted: #647089;
+  --line: #e2e7f0;
+  --brand: #2f58cd;
+  --brand-ink: #ffffff;
+  --high: #c0392b;
+  --high-bg: #fdecea;
+  --medium: #b7791f;
+  --medium-bg: #fdf3e2;
+  --low: #2c7a4b;
+  --low-bg: #e9f6ee;
+  --shadow: 0 1px 3px rgba(16, 24, 40, 0.08), 0 1px 2px rgba(16, 24, 40, 0.06);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.5;
+}
+
+.wrap {
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.app-header {
+  background: linear-gradient(135deg, #2f58cd, #4b7bec);
+  color: #fff;
+  padding: 28px 0;
+}
+.app-header h1 { margin: 0; font-size: 1.6rem; }
+.subtitle { margin: 4px 0 0; opacity: 0.9; font-size: 0.95rem; }
+
+main { padding: 24px 0 8px; }
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+.card h2 { margin: 0 0 14px; font-size: 1.15rem; }
+
+/* Form */
+.request-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto auto;
+  gap: 12px;
+  align-items: end;
+}
+.field { display: flex; flex-direction: column; gap: 4px; }
+.field label { font-size: 0.8rem; color: var(--muted); font-weight: 600; }
+input, select {
+  padding: 9px 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  font-size: 0.95rem;
+  background: #fff;
+  color: var(--ink);
+}
+input:focus, select:focus { outline: 2px solid var(--brand); outline-offset: 1px; }
+
+.btn {
+  border: 0;
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.btn-primary { background: var(--brand); color: var(--brand-ink); }
+.btn-primary:hover { background: #244aad; }
+
+/* List header + filter */
+.list-header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+.list-header h2 { margin: 0; }
+
+.filter { display: flex; align-items: center; gap: 8px; }
+.filter-label { font-size: 0.85rem; color: var(--muted); font-weight: 600; }
+.filter-buttons { display: inline-flex; gap: 6px; }
+
+.chip {
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--muted);
+  border-radius: 999px;
+  padding: 5px 13px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.12s, color 0.12s, border-color 0.12s;
+}
+.chip:hover { border-color: var(--brand); color: var(--brand); }
+.chip.is-active {
+  background: var(--brand);
+  border-color: var(--brand);
+  color: #fff;
+}
+.chip:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
+
+.count { margin: 2px 0 14px; color: var(--muted); font-size: 0.85rem; }
+
+/* Request list */
+.request-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.request-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 12px 14px;
+}
+.request-main { display: flex; flex-direction: column; gap: 2px; }
+.request-item .item-name { font-weight: 600; }
+.request-item .requester { font-size: 0.85rem; color: var(--muted); }
+
+.badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.badge.High { color: var(--high); background: var(--high-bg); }
+.badge.Medium { color: var(--medium); background: var(--medium-bg); }
+.badge.Low { color: var(--low); background: var(--low-bg); }
+
+.empty-state {
+  margin: 8px 0 0;
+  padding: 18px;
+  text-align: center;
+  color: var(--muted);
+  background: #f8fafc;
+  border: 1px dashed var(--line);
+  border-radius: 10px;
+}
+
+.app-footer { padding: 16px 0 32px; color: var(--muted); font-size: 0.85rem; }
+
+@media (max-width: 620px) {
+  .request-form { grid-template-columns: 1fr 1fr; }
+  .request-form .btn { grid-column: 1 / -1; }
+  .list-header { align-items: flex-start; }
+}

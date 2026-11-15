@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Equipment Request Tracker</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="app-header">
+    <div class="wrap">
+      <h1>Equipment Request Tracker</h1>
+      <p class="subtitle">Submit and review equipment requests &mdash; no login required.</p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- New request form -->
+    <section class="card" aria-labelledby="new-request-heading">
+      <h2 id="new-request-heading">New request</h2>
+      <form id="request-form" class="request-form" autocomplete="off">
+        <div class="field">
+          <label for="item">Equipment</label>
+          <input type="text" id="item" name="item" placeholder="e.g. Laptop dock" required />
+        </div>
+        <div class="field">
+          <label for="requester">Requested by</label>
+          <input type="text" id="requester" name="requester" placeholder="e.g. Dana Lee" required />
+        </div>
+        <div class="field">
+          <label for="priority">Priority</label>
+          <select id="priority" name="priority">
+            <option value="High">High</option>
+            <option value="Medium" selected>Medium</option>
+            <option value="Low">Low</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Add request</button>
+      </form>
+    </section>
+
+    <!-- Requests list -->
+    <section class="card" aria-labelledby="requests-heading">
+      <div class="list-header">
+        <h2 id="requests-heading">Requests</h2>
+
+        <!-- ===== Priority filter (Exercise 6 feature) ===== -->
+        <div class="filter" role="group" aria-label="Filter requests by priority">
+          <span class="filter-label">Priority:</span>
+          <div class="filter-buttons" id="priority-filter">
+            <button type="button" class="chip is-active" data-priority="All" aria-pressed="true">All</button>
+            <button type="button" class="chip" data-priority="High" aria-pressed="false">High</button>
+            <button type="button" class="chip" data-priority="Medium" aria-pressed="false">Medium</button>
+            <button type="button" class="chip" data-priority="Low" aria-pressed="false">Low</button>
+          </div>
+        </div>
+        <!-- ===== End priority filter ===== -->
+      </div>
+
+      <p class="count" id="result-count" aria-live="polite"></p>
+
+      <ul class="request-list" id="request-list"></ul>
+
+      <p class="empty-state" id="empty-state" hidden>
+        No requests match this filter. Existing requests are still saved &mdash; choose <strong>All</strong> to see them again.
+      </p>
+    </section>
+  </main>
+
+  <footer class="app-footer wrap">
+    <p>MIS 4173 &bull; Equipment Request Tracker</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
